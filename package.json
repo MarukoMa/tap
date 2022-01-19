@@ -1,0 +1,21 @@
+{
+  "name": "tap",
+  "version": "1.0.0",
+  "description": "tap",
+  "main": "tap.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack --progress --colors"
+  },
+  "keywords": [
+    "tap",
+    "click",
+    "touch"
+  ],
+  "respository": "https://github.com/MarukoMa/tap",
+  "Homepage":"",
+  "devDependencies": {
+  },
+  "author": "MarukoMa",
+  "license": "ISC"
+}
