@@ -3,33 +3,62 @@
 ## Installation
 
 `$ npm i event-tap`
-
-## tap.bindEvent
-事件绑定
-### options
-* dom: dom对象
-* type: 事件类型, 可选值有: click(单点)、longpress(长安点击)
-* callback:  事件的回调函数
+## options
+### dom
+* dom对象
+### type
+* 事件类型
+* type: String
+* 可选值有: click(单点)、longpress(长安点击),default: 'click'
+### callback
+* 事件的回调函数
+* type: Function
+### isRemoveEle 
+* 是否移除事件绑定,默认值为否
+* type: Boolean
+* default: false
      
-### tap.removeEvent
-事件回收
-### options
-* dom: dom对象
-* type: 事件类型, 可选值有: click(单点)、longpress(长安点击)
-* callback:  事件的回调函数
-    
+
 ## Usage
 ```javascript
     import { tap} from 'event-tap';
     const dom = document.getElementById('content')
     const btn = document.getElementById('btn')
     const child = document.getElementById('child')
-   tap.bindEvent(dom, 'click', handClick)
-   //长按点击解除绑定
-    function handLongpressRemove(){
-        tap.removeEvent(child, 'click', handClick2);
+    function handClick(){
+        alert('点击content')
     }
-    tap.bindEvent(btn, 'click', handLongpressRemove)
+    function handClick2(){
+        alert('点击child')
+    }
+    function handRemoveEle(){
+        alert('点击事件已移除')
+    }
+    const opts = {
+        dom: dom,
+        type: 'click',
+        callback: handClick,
+        isRemoveEle: false
+    }
+    tap(opts)
+    const opts2 = {
+        dom: child,
+        type: 'click',
+        callback: handClick2,
+        isRemoveEle: false
+    }
+    tap(opts2)
+    // //点击按钮解除child点击事件绑定
+    function handRemoveEle(){
+        opts2.isRemoveEle = true
+        tap(opts2);
+    }
+    const opts3 = {
+        dom: btn,
+        type: 'click',
+        callback: handRemoveEle
+    }
+    tap(opts3)
 
 ```
 

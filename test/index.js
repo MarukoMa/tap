@@ -8,14 +8,31 @@ function handClick(){
 function handClick2(){
     alert('点击child')
 }
-function handLongpress(){
-    alert('长安点击事件')
+function handRemoveEle(){
+    alert('点击事件已移除')
 }
-
-tap.bindEvent(dom, 'click', handClick)
-tap.bindEvent(child, 'click', handClick2)
-//长按点击解除绑定
-function handLongpressRemove(){
-    tap.removeEvent(child, 'click', handClick2);
+const opts = {
+    dom: dom,
+    type: 'click',
+    callback: handClick,
+    isRemoveEle: false
+  }
+tap(opts)
+const opts2 = {
+    dom: child,
+    type: 'click',
+    callback: handClick2,
+    isRemoveEle: false
+  }
+tap(opts2)
+// //点击按钮解除child点击事件绑定
+function handRemoveEle(){
+    opts2.isRemoveEle = true
+    tap(opts2);
 }
-tap.bindEvent(btn, 'click', handLongpressRemove)
+const opts3 = {
+    dom: btn,
+    type: 'click',
+    callback: handRemoveEle
+  }
+tap(opts3)
