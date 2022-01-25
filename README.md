@@ -1,64 +1,51 @@
 # tap事件封装
-原理:利用touchstart 和 touchend 两个事件位置基本一致,若没有发生位移则是点击事件
+* 原理:利用touchstart 和 touchend 两个事件位置基本一致,若没有发生位移则是点击事件
+* 支持事件解绑功能
 ## Installation
 
 `$ npm i event-tap`
 ## options
 ### dom
 * dom对象
-### type
-* 事件类型
-* type: String
-* 可选值有: click(单点)、longpress(长安点击),default: 'click'
 ### callback
 * 事件的回调函数
 * type: Function
-### isRemoveEle 
-* 是否移除事件绑定,默认值为否
-* type: Boolean
-* default: false
-     
+
+### 事件解绑方法名 removeEvent
 
 ## Usage
 ```javascript
-    import { tap} from 'event-tap';
+    import tap from 'event-tap';
     const dom = document.getElementById('content')
     const btn = document.getElementById('btn')
     const child = document.getElementById('child')
     function handClick(){
-        alert('点击content')
+        console.log('点击content')
     }
     function handClick2(){
-        alert('点击child')
+    console.log('点击child')
     }
-    function handRemoveEle(){
-        alert('点击事件已移除')
+    function handClick3(){
+    console.log('再次点击content')
     }
     const opts = {
         dom: dom,
-        type: 'click',
-        callback: handClick,
-        isRemoveEle: false
+        callback: handClick
     }
-    tap(opts)
+    const tap1 = tap(opts)
     const opts2 = {
-        dom: child,
-        type: 'click',
-        callback: handClick2,
-        isRemoveEle: false
+        dom: dom,
+        callback: handClick3
     }
     tap(opts2)
-    // //点击按钮解除child点击事件绑定
-    function handRemoveEle(){
-        opts2.isRemoveEle = true
-        tap(opts2);
-    }
+    setTimeout(function(){
+        tap1.removeEvent()
+    },2000)
     const opts3 = {
-        dom: btn,
-        type: 'click',
-        callback: handRemoveEle
+        dom: child,
+        callback: handClick2
     }
-    tap(opts3)
+    tap(opts3) //child事件绑定
 
 ```
 

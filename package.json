@@ -1,6 +1,6 @@
 {
   "name": "tap",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "tap",
   "main": "tap.js",
   "scripts": {
@@ -12,8 +12,14 @@
     "click",
     "touch"
   ],
-  "respository": "https://github.com/MarukoMa/tap",
-  "Homepage": "https://github.com/MarukoMa/tap/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarukoMa/tap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarukoMa/tap/issues"
+  },
+  "homepage": "https://github.com/MarukoMa/tap#readme",
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
@@ -24,7 +30,7 @@
     "webpack-dev-server": "^4.7.2"
   },
   "dependencies": {
-    "event-tap": "^1.0.2",
+    "event-tap": "^1.0.5",
     "html-webpack-plugin": "^5.5.0"
   },
   "author": "MarukoMa",
